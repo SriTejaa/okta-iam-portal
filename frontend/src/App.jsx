@@ -1,12 +1,7 @@
-import './App.css'
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return (
-    <div>
-      <h1>IAM Portal</h1>
-      <p>Frontend Foundation Phase</p>
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
