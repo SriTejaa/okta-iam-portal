@@ -9,7 +9,19 @@ Client Secret
 API Token
 Authorization Server ID
 
+Authorization Server:
+    IAM-PORTAL-AS
 
+OIDC Scopes:
+    openid
+    profile
+    email
+
+Custom Scopes:
+    Not Required (V1)
+
+Authorization:
+    RBAC via Okta Groups
 
 Okta Org
 │
