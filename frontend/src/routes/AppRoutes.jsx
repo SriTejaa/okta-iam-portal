@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "../pages/LoginPage";
 import ProfilePage from "../pages/ProfilePage";
+import ProtectedRoute from "./ProtectedRoute";
 
 function AppRoutes() {
   return (
@@ -9,7 +10,14 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route
+        path="/profile"
+        element={
+            <ProtectedRoute>
+            <ProfilePage />
+            </ProtectedRoute>
+        }
+        />
       </Routes>
     </BrowserRouter>
   );
