@@ -1,10 +1,14 @@
 import { Navigate } from "react-router-dom";
-import{useAuth} from "../context/AuthContext"
+import{useOktaAuth} from "@okta/okta-react"
 
 function ProtectedRoute({ children }) {
-  const { isAuthenticated } = useAuth();
+    const { authState } = useOktaAuth();
 
-  if (!isAuthenticated) {
+  if (!authState) {
+    return <div>Loading...</div>;
+  }
+
+  if (!authState.isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 

@@ -9,6 +9,14 @@ Client Secret
 API Token
 Authorization Server ID
 
+Sign-in redirect URIs 
+http://localhost:5173/login/callback
+Sign-out redirect URIs 
+http://localhost:5173
+
+Client ID: 0oa13tyr4sm5nQPAx698
+Issuer URL: https://integrator-9643035.okta.com/oauth2/aus13v5ey6tB2HtpO698
+
 Authorization Server:
     IAM-PORTAL-AS
 

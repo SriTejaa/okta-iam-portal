@@ -1,13 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-
+import{useOktaAuth} from "@okta/okta-react"
 function ProfilePage() {
-    const navigate = useNavigate();
-  const { logout } = useAuth();
+  const { oktaAuth  } = useOktaAuth();
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
+  const handleLogout = async() => {
+    await oktaAuth.signOut();
   };
   return (
     <div>

@@ -1,13 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import oktaAuth from "../services/oktaConfig";
 
 function LoginPage() {
-  const navigate = useNavigate();
-  const { login } = useAuth();
-
   const handleLogin = () => {
-    login();
-    navigate("/profile");
+  oktaAuth.signInWithRedirect();
   };
 
   return (
