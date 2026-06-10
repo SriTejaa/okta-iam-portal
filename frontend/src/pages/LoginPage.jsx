@@ -1,19 +1,16 @@
 import oktaAuth from "../services/oktaConfig";
 
 function LoginPage() {
-  const handleLogin = () => {
-  oktaAuth.signInWithRedirect();
-  };
-
   return (
-    <div>
-      <h1>Login Page</h1>
-
-      <button onClick={handleLogin}>
-        Login
-      </button>
+    <div className="min-h-screen flex items-center justify-center bg-slate-100">
+      <div className="bg-white p-8 rounded-xl shadow-lg">
+        <h1 className="text-3xl font-bold text-slate-800">
+          Tailwind Working 🚀
+        </h1>
+      </div>
     </div>
   );
 }
+
 
 export default LoginPage;
