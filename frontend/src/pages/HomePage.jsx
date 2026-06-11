@@ -9,7 +9,7 @@ function HomePage() {
   }
 
   return authState.isAuthenticated
-    ? <Navigate to="/profile" replace />
+    ? <Navigate to="/dashboard" replace />
     : <Navigate to="/login" replace />;
 }
 

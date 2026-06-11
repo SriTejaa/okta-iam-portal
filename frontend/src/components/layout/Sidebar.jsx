@@ -1,36 +1,24 @@
 import { NavLink } from "react-router-dom";
-import {
-  LayoutDashboard,
-  User,
-  KeyRound,
-  History,
-} from "lucide-react";
+import { navigationItems } from "../../configs/navigationConfig";
+import { useOktaAuth } from "@okta/okta-react";
+import { getGroups } from "../../utils/jwtUtils";
 
-const menuItems = [
-  {
-    label: "Dashboard",
-    path: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    label: "Profile",
-    path: "/profile",
-    icon: User,
-  },
-  {
-    label: "My Access Requests",
-    path: "/my-access-requests",
-    icon: KeyRound,
-  },
-  {
-    label: "My Request History",
-    path: "/my-request-history",
-    icon: History,
-  },
-];
 
 function Sidebar() {
+  const { authState } = useOktaAuth();
+
+const userGroups =
+  authState?.accessToken?.accessToken
+    ? getGroups(authState.accessToken.accessToken)
+    : [];
+    const menuItems = navigationItems.filter(
+  (item) =>
+    item.roles.some((role) =>
+      userGroups.includes(role)
+    )
+);
   return (
+    
     <aside className="w-64 bg-white border-r border-slate-200 min-h-[calc(100vh-64px)]">
       <div className="p-6">
         <h2 className="text-lg font-bold text-slate-800">

@@ -2,11 +2,15 @@ import { useOktaAuth } from "@okta/okta-react";
 
 import Card from "../components/ui/Card";
 import PageHeader from "../components/ui/PageHeader";
+import { getGroups } from "../utils/jwtUtils";
 
 function ProfilePage() {
   const { authState, oktaAuth } = useOktaAuth();
 
   const claims = authState?.idToken?.claims;
+  const groups = getGroups(authState.accessToken.accessToken);
+  console.log("groups");
+  console.log(groups);
 
   const handleLogout = async () => {
     await oktaAuth.signOut();
