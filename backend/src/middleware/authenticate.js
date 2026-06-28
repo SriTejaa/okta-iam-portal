@@ -29,15 +29,16 @@ const authenticate = async (
       );
 
     req.user = jwt.claims;
-
+console.log("AUTHENTICATE PASSED");
     next();
 
   } catch (error) {
-    console.error("================================");
-  console.error("JWT VERIFICATION FAILED");
+    logger.error("================================");
+  logger.error("JWT VERIFICATION FAILED");
 //   console.error(error);
-  logger.error(error);
-  console.error("================================");
+  console.error("FULL ERROR:");
+console.dir(error, { depth: null });
+  logger.error("================================");
     return res.status(401).json({
       success: false,
       message: "Invalid or expired token",

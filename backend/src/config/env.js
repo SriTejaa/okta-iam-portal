@@ -7,6 +7,8 @@ const requiredEnvVars = [
   "NODE_ENV",
   "OKTA_ISSUER",
   "OKTA_AUDIENCE",
+  "OKTA_API_TOKEN",
+  "OKTA_ORG_URL"
 ];
 
 requiredEnvVars.forEach((envVar) => {
@@ -23,6 +25,8 @@ const env = {
 
   oktaIssuer: process.env.OKTA_ISSUER,
   oktaAudience: process.env.OKTA_AUDIENCE,
+  oktaApiToken: process.env.OKTA_API_TOKEN,
+  oktaOrgUrl: process.env.OKTA_ORG_URL,
 };
 
 module.exports = env;
