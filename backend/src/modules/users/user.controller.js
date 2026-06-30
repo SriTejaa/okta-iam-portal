@@ -4,6 +4,14 @@ const {
   successResponse,
 } = require("../../shared/responses/apiResponse");
 
+const lifecycleMessages = {
+  ACTIVATE: "User activated successfully",
+  SUSPEND: "User suspended successfully",
+  UNSUSPEND: "User unsuspended successfully",
+  DEACTIVATE: "User deactivated successfully",
+  REACTIVATE: "User reactivated successfully",
+};
+
 const getUsers = async (
   req,
   res,
@@ -71,9 +79,58 @@ const createUser = async (
   }
 };
 
+const updateUser = async (
+  req,
+  res,
+  next
+) => {
+  try {
+
+    const user =
+      await userService.updateUser(
+        req.params.id,
+        req.body
+      );
+
+    return successResponse(
+      res,
+      user,
+      "User updated successfully"
+    );
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+const performLifecycleAction = async (
+  req,
+  res,
+  next
+) => {
+  try {
+
+    const user =
+      await userService.performLifecycleAction(
+        req.params.id,
+        req.body.action
+      );
+
+    return successResponse(
+      res,
+      user,
+     lifecycleMessages[action]
+    );
+
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   getUsers,
   getUserById,
   createUser,
+  updateUser,
+  performLifecycleAction,
 };

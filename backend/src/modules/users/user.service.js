@@ -37,8 +37,43 @@ const createUser = async (userDetails) => {
   return mapUser(user);
 
 };
+
+const updateUser = async (
+  userId,
+  userDetails
+) => {
+
+  const user =
+    await usersClient.updateUser(
+      userId,
+      userDetails
+    );
+
+  return mapUser(user);
+
+};
+
+const performLifecycleAction = async (
+  userId,
+  action
+) => {
+
+  await usersClient.executeLifecycleAction(
+      userId,
+      action
+    );
+
+    const user =
+    await usersClient.getUserById(userId); // to get latest user info
+
+  return mapUser(user);
+
+};
+
 module.exports = {
   getUsers,
   getUserById,
   createUser,
+  updateUser,
+  performLifecycleAction,
 };
